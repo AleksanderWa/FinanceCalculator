@@ -1,3 +1,4 @@
+import com.sun.xml.internal.bind.v2.TODO;
 import io.reactivex.Flowable;
 import org.jetbrains.annotations.NotNull;
 
@@ -47,22 +48,38 @@ public class Parser implements IBankOperations {
                     switch (field.get(2)) {
                         case CREDIT_CARD:
                         case ATM_CASH_BACK:
-                            return InOutComeFactory.getInOutCome(Double.parseDouble(field.get(3)), Double.parseDouble(field.get(5)), field.get(4), this.parseReceiver(field.get(7)), this.parseDate(field.get(8)), field.get(2), this.parseDescription(field.get(6)));
+                            return InOutComeFactory.getInOutCome(Double.parseDouble(field.get(3)),
+                                    Double.parseDouble(field.get(5)), field.get(4), this.parseReceiver(field.get(7)),
+                                    this.parseDate(field.get(8)), field.get(2), this.parseDescription(field.get(6)));
+
                         case GET_FROM:
-                            return InOutComeFactory.getInOutCome(Double.parseDouble(field.get(3)), Double.parseDouble(field.get(5)), field.get(4), this.parseSender(field.get(7),field.get(8)), this.parseDate(field.get(0)), field.get(2), field.get(8));
+                            return InOutComeFactory.getInOutCome(Double.parseDouble(field.get(3)),
+                                    Double.parseDouble(field.get(5)), field.get(4), this.parseSender(field.get(7),
+                                            field.get(8)), this.parseDate(field.get(0)), field.get(2), field.get(8));
                         case SEND_TO:
                             boolean isLongRow = sendToHelper(field.size()) == LONG_ROW_SEND_TO;
                             if(isLongRow)
-                                return InOutComeFactory.getInOutCome(Double.parseDouble(field.get(3)), Double.parseDouble(field.get(5)), field.get(4), this.parseReceiver(field.get(7), field.get(8)), this.parseDate(field.get(0)), field.get(2), this.parseDescription(field.get(8),field.get(9)));
+                                return InOutComeFactory.getInOutCome(Double.parseDouble(field.get(3)),
+                                        Double.parseDouble(field.get(5)), field.get(4), this.parseReceiver(field.get(7),
+                                                field.get(8)), this.parseDate(field.get(0)), field.get(2),
+                                        this.parseDescription(field.get(8),field.get(9)));
+
                             else if(!field.get(7).startsWith(DESCRIPTION))
-                                return InOutComeFactory.getInOutCome(Double.parseDouble(field.get(3)), Double.parseDouble(field.get(5)), field.get(4), this.parseReceiver(field.get(7), field.get(8)), this.parseDate(field.get(0)), field.get(2), this.parseDescription(field.get(8)));
+                                return InOutComeFactory.getInOutCome(Double.parseDouble(field.get(3)),
+                                        Double.parseDouble(field.get(5)), field.get(4), this.parseReceiver(field.get(7),
+                                                field.get(8)), this.parseDate(field.get(0)), field.get(2),
+                                        this.parseDescription(field.get(8)));
+
                         default: //phone cash
-                            return InOutComeFactory.getInOutCome(Double.parseDouble(field.get(3)), Double.parseDouble(field.get(5)), field.get(4), this.parseReceiver(field.get(6),field.get(7)), this.parseDate(field.get(0)), field.get(2), field.get(7));
+                            return InOutComeFactory.getInOutCome(Double.parseDouble(field.get(3)),
+                                    Double.parseDouble(field.get(5)), field.get(4), this.parseReceiver(field.get(6),
+                                            field.get(7)), this.parseDate(field.get(0)), field.get(2), field.get(7));
                     }
                 })
                 .subscribe(abstractInOutCome -> list.add(abstractInOutCome));
                 return list;
     }
+
 
 
     @NotNull
@@ -124,6 +141,7 @@ public class Parser implements IBankOperations {
     }
 
 
+    //TODO add regex for receiver: REGEX FOR CITY: ^.*?\d{3}-\d{2}
     @NotNull
     private Receiver parseSender(final String rawData, final String rawDataAddr)
     {
@@ -188,6 +206,5 @@ public class Parser implements IBankOperations {
             return SHORT_ROW_SEND_TO;
         }
     }
-
 
 }
