@@ -30,17 +30,18 @@ public class Main {
         for (AbstractInOutCome ab: ob.readCsvFile())
         {
 
-                System.out.println((ab.getPaymentReceiver().getCity()) + ", " + ab.getPaymentValue() + ", " + ab.getDescription());
+                System.out.println( ab.getPaymentReceiver().getBankAccountNmb() + ", " + (ab.getPaymentReceiver().getCity()) + ", " + ab.getPaymentValue() + ", " + ab.getDescription());
 
             if(ab instanceof Outcome)
-                value += ab.getPaymentValue();
+                if(!ab.getPaymentReceiver().getBankAccountNmb().equalsIgnoreCase("39 1020 4795 0000 9002 0400 6672"))
+                    value += ab.getPaymentValue();
 
             if(ab instanceof Income)
                 value1 += ab.getPaymentValue();
         }
         System.out.println("Total money spent: " + value);
         System.out.println("Total money received: " + value1);
-        System.out.println("List " + ob.readCsvFile().get(0).getDescription());
+        System.out.println("Final value " + (value + value1));
 
 
     }
