@@ -15,6 +15,7 @@ final class BankOperationConsts
     static final String DESCRIPTION = "Tytu�: ";
     static final String BANK_ACC_NUMBER_RECEIVER = "Rachunek odbiorcy: ";
     static final String BANK_ACC_NUMBER_SENDER = "Rachunek nadawcy: ";
+    static final String CONSTANT_PAYMENT = "Zlecenie sta�e";
     static final int SHORT_ROW_SEND_TO = 1; // 8 fields row
     static final int LONG_ROW_SEND_TO = 2;  // 8+ fields row
 }

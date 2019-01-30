@@ -38,8 +38,10 @@ public class Parser {
                 .filter(s -> !s.isEmpty())
                 .doOnComplete(() -> System.out.println("done"))
 
-                .map(s -> Arrays.stream(s.split("\""))
+                .map(s -> Arrays.stream(s.split(",\""))
+                        .map(s1 -> s1.replace("\"",""))
                         .filter(s1 -> !s1.startsWith(","))
+
                         .filter(s1 -> !s1.isEmpty())
                         .collect(Collectors.toList()))
 
@@ -55,6 +57,8 @@ public class Parser {
                             return InOutComeFactory.getInOutCome(Double.parseDouble(field.get(3)),
                                     Double.parseDouble(field.get(5)), field.get(4), this.parseSender(field.get(7),
                                             field.get(8), field.get(6)), this.parseDate(field.get(0)), field.get(2), field.get(8));
+
+                        case BankOperationConsts.CONSTANT_PAYMENT:
                         case BankOperationConsts.SEND_TO:
                             boolean isLongRow = sendToHelper(field.size()) == BankOperationConsts.LONG_ROW_SEND_TO;
                             if(isLongRow)
@@ -177,6 +181,7 @@ public class Parser {
                 dateString = rawData.split(BankOperationConsts.DATE)[1];
             } else
                 dateString = rawData.concat(" 00:00:00");
+
             DateFormat ft = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             return ft.parse(dateString);
         }

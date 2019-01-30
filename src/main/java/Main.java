@@ -23,14 +23,14 @@ public class Main {
                 //name -> System.out.println(name)
         );
 
-        Parser ob = new Parser("C:\\Users\\Aleksander\\Desktop\\csv_october.csv");
+        Parser ob = new Parser("C:\\Users\\walkpale\\Downloads\\history_csv_20190130_115116.csv");
 
         Double value = 0.0;
         Double value1 = 0.0;
         for (AbstractInOutCome ab: ob.readCsvFile())
         {
-
-                System.out.println( ab.getPaymentReceiver().getBankAccountNmb() + ", " + (ab.getPaymentReceiver().getCity()) + ", " + ab.getPaymentValue() + ", " + ab.getDescription());
+            System.out.println(ab.getPaymentValue());
+                //System.out.println( ab.getPaymentReceiver().getBankAccountNmb() + ", " + (ab.getPaymentReceiver().getCity()) + ", " + ab.getPaymentValue() + ", " + ab.getDescription());
 
             if(ab instanceof Outcome)
                 if(!ab.getPaymentReceiver().getBankAccountNmb().equalsIgnoreCase("39 1020 4795 0000 9002 0400 6672"))
