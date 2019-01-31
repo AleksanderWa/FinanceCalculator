@@ -31,7 +31,7 @@ public class Main extends Application {
         Parser ob = new Parser("C:\\Users\\walkpale\\Downloads\\history_csv_20190130_115116.csv");
 
         Double value = 0.0;
-        Double value1 = 0.0;
+        Double moneySpent = 0.0;
         for (AbstractInOutCome ab: ob.readCsvFile())
         {
             System.out.println(ab.getPaymentValue());
@@ -42,11 +42,11 @@ public class Main extends Application {
                     value += ab.getPaymentValue();
 
             if(ab instanceof Income)
-                value1 += ab.getPaymentValue();
+                moneySpent += ab.getPaymentValue();
         }
-        System.out.println("Total money spent: " + value);
-        System.out.println("Total money received: " + value1);
-        System.out.println("Final value " + (value + value1));
+        //System.out.println("Total money spent: " + value);
+       // System.out.println("Total money received: " + moneySpent);
+        //System.out.println("Final value " + (value + moneySpent));
 
         launch(args);
 
