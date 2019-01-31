@@ -1,3 +1,5 @@
+package sample.AppFinance;
+
 final class BankOperationConsts
 {
     public BankOperationConsts() { throw new UnsupportedOperationException(); }

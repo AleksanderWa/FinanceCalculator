@@ -1,11 +1,16 @@
-import io.reactivex.Observable;
+package sample.AppFinance;
 
-import java.time.LocalDate;
+import io.reactivex.Observable;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Main {
+public class Main extends Application {
     private static List<String> SUPER_HEROES = Arrays.asList(
             "Superman",
             "Batman",
@@ -43,6 +48,16 @@ public class Main {
         System.out.println("Total money received: " + value1);
         System.out.println("Final value " + (value + value1));
 
+        launch(args);
 
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+
+        Parent root = FXMLLoader.load(getClass().getResource("VisualApp.fxml"));
+        Scene scene = new Scene(root, 500, 300);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }

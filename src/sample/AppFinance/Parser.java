@@ -1,3 +1,5 @@
+package sample.AppFinance;
+
 import io.reactivex.Flowable;
 import org.jetbrains.annotations.NotNull;
 

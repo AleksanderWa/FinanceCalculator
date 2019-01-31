@@ -1,3 +1,5 @@
+package sample.AppFinance;
+
 import java.util.Date;
 
 public abstract class AbstractInOutCome{
