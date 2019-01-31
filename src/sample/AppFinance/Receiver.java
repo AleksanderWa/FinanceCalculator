@@ -1,3 +1,5 @@
+package sample.AppFinance;
+
 class Receiver {
     private String country;
     private String city;

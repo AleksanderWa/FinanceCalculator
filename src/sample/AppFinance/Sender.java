@@ -1,3 +1,5 @@
+package sample.AppFinance;
+
 public class Sender {
     private String name;
     private String bankAccountNmb;
