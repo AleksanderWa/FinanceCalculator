@@ -28,25 +28,6 @@ public class Main extends Application {
                 //name -> System.out.println(name)
         );
 
-        Parser ob = new Parser("C:\\Users\\Aleksander\\Desktop\\2018_year.csv");
-
-        Double value = 0.0;
-        Double moneySpent = 0.0;
-        for (AbstractInOutCome ab: ob.readCsvFile())
-        {
-            //System.out.println(ab.getPaymentReceiver().getAddress());
-                //System.out.println( ab.getPaymentReceiver().getBankAccountNmb() + ", " + (ab.getPaymentReceiver().getCity()) + ", " + ab.getPaymentValue() + ", " + ab.getDescription());
-
-            if(ab instanceof Outcome)
-                if(!ab.getPaymentReceiver().getBankAccountNmb().equalsIgnoreCase("39 1020 4795 0000 9002 0400 6672") && ab.getPaymentReceiver().getAddress().contains("BIEDRONKA "))
-                    value += ab.getPaymentValue();
-
-            if(ab instanceof Income)
-                moneySpent += ab.getPaymentValue();
-        }
-        //System.out.println("Total money spent: " + value);
-       // System.out.println("Total money received: " + moneySpent);
-        //System.out.println("Final value " + (value + moneySpent));
 
         launch(args);
 

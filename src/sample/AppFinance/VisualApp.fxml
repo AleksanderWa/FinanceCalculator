@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="280.0" maxWidth="760.0" minHeight="270.0" minWidth="750.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AppFinance.Controller">
+<VBox maxHeight="280.0" maxWidth="760.0" minHeight="270.0" minWidth="750.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AppFinance.Controller">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="264.0" prefWidth="729.0" VBox.vgrow="ALWAYS">
             <children>
-            <VBox fx:id="vbox_left" layoutX="109.0" layoutY="11.0" prefHeight="226.0" prefWidth="248.0">
+            <VBox fx:id="vbox_left" layoutX="109.0" layoutY="11.0" prefHeight="226.0" prefWidth="386.0">
                <children>
                   <ComboBox fx:id="combo_abstract_elements" onAction="#onListElementClick" prefWidth="150.0" />
-                  <ListView fx:id="payment_elements" prefHeight="200.0" prefWidth="200.0" />
+                  <ListView fx:id="payment_elements" prefHeight="200.0" prefWidth="317.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
                 <VBox fx:id="vbox_main" layoutX="600.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="193.0" prefWidth="136.0">

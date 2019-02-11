@@ -78,4 +78,11 @@ public abstract class AbstractInOutCome{
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder listRow = new StringBuilder(this.getPaymentReceiver().getAddress() + " " +
+                this.getPaymentMethod() + " KWOTA: " + this.getPaymentValue() + " DATA: " + this.getDateOfOperation());
+        return listRow.toString();
+    }
 }

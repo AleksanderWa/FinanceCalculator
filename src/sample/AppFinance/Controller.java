@@ -43,7 +43,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Parser ob = new Parser("C:\\Users\\Aleksander\\Desktop\\2018_year.csv");
+        Parser ob = new Parser("C:\\Users\\walkpale\\Downloads\\history_csv_20190130_115116.csv");
         Double moneyEarned = 0.0;
         Double moneySpent = 0.0;
         Double finalValue;
