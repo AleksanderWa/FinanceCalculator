@@ -56,6 +56,7 @@ public class Parser {
                                     this.parseDate(field.get(8)), field.get(2), this.parseDescription(field.get(6)));
 
                         case BankOperationConsts.GET_FROM:
+                        case BankOperationConsts.GET_FROM_NOW:
                             return InOutComeFactory.getInOutCome(Double.parseDouble(field.get(3)),
                                     Double.parseDouble(field.get(5)), field.get(4), this.parseSender(field.get(7),
                                             field.get(8), field.get(6)), this.parseDate(field.get(0)), field.get(2), field.get(8));

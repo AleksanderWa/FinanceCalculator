@@ -81,8 +81,8 @@ public abstract class AbstractInOutCome{
 
     @Override
     public String toString() {
-        StringBuilder listRow = new StringBuilder(this.getPaymentReceiver().getAddress() + " " +
-                this.getPaymentMethod() + " KWOTA: " + this.getPaymentValue() + " DATA: " + this.getDateOfOperation());
+        StringBuilder listRow = new StringBuilder(this.getPaymentMethod() + " KWOTA: " + this.getPaymentValue() +
+                " DATA: " + this.getDateOfOperation());
         return listRow.toString();
     }
 }

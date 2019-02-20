@@ -39,6 +39,9 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("VisualApp.fxml"));
         Scene scene = new Scene(root, 500, 300);
         primaryStage.setScene(scene);
+        primaryStage.sizeToScene();
         primaryStage.show();
+        primaryStage.setMinWidth(750);
+        primaryStage.setMinHeight(250);
     }
 }
