@@ -1,26 +1,55 @@
 package sample.AppFinance;
 
-public interface ExpensesCategories
+import javax.naming.ldap.Control;
+
+public class ExpensesCategories implements IExpensesCategories
 {
+    @Override
+    public double calculateFoodMarkets()
+    {
 
-    String BIEDRONKA = "BIEDRONKA";
-    String CARREFUR = "CARREFUR";
-    String SPOLEM = "SPOLEM";
-    int FOOD_MARKETS = 0;
-    int PUBS_AND_BARS = 1;
-    int HOTELS = 2;
-    int STORES = 3;
-    int GAS_STATIONS = 4;
-    int FOOD_RESTAURATNS = 5;
-    int DRUG_STORES = 6;
-    int TRANSPORT_TICKETS = 7;
+        return 0;
+    }
 
-    double calculateFoodMarkets();
-    double calculatePubsAndBars();
-    double calculateHotels();
-    double calculateStores();
-    double calculateGasStations();
-    double calculateFoodRestaurants();
-    double calculateDrugStores();
-    double calculateTransportickets();
+    @Override
+    public double calculatePubsAndBars()
+    {
+        return 0;
+    }
+
+    @Override
+    public double calculateHotels()
+    {
+        return 0;
+    }
+
+    @Override
+    public double calculateStores()
+    {
+        return 0;
+    }
+
+    @Override
+    public double calculateGasStations()
+    {
+        return 0;
+    }
+
+    @Override
+    public double calculateFoodRestaurants()
+    {
+        return 0;
+    }
+
+    @Override
+    public double calculateDrugStores()
+    {
+        return 0;
+    }
+
+    @Override
+    public double calculateTransportickets()
+    {
+        return 0;
+    }
 }

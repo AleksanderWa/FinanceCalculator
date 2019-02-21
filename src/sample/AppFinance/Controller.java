@@ -82,7 +82,7 @@ public class Controller implements Initializable
     /**
      * Take all items and create unique list without duplicates
      */
-    private ArrayList<String> createUniqueList(List<AbstractInOutCome> wholeList)
+    private static ArrayList<String> createUniqueList(List<AbstractInOutCome> wholeList)
     {
         ArrayList<String> uniqueList = new ArrayList<>();
         for (AbstractInOutCome ab : wholeList)
