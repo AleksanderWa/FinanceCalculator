@@ -2,8 +2,8 @@ package sample.AppFinance;
 
 import java.util.Date;
 
-class InOutComeFactory {
-    static AbstractInOutCome getInOutCome(double paymentValue, double accountBalance, String currencyType, Receiver paymentReceiver, Date dateOfOperation, String paymentMethod, String description)
+public class InOutComeFactory {
+    public static AbstractInOutCome getInOutCome(double paymentValue, double accountBalance, String currencyType, Receiver paymentReceiver, Date dateOfOperation, String paymentMethod, String description)
     {
         if(paymentValue >= 0)
         {

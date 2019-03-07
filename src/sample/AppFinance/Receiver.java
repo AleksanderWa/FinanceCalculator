@@ -1,12 +1,12 @@
 package sample.AppFinance;
 
-class Receiver {
+public class Receiver {
     private String country;
     private String city;
     private String address;
     private String bankAccountNmb;
 
-     Receiver(String country, String city, String address, String bankAccountNmb)
+     public Receiver(String country, String city, String address, String bankAccountNmb)
     {
         this.country = country;
         this.city = city;

@@ -6,21 +6,16 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox minHeight="250.0" minWidth="750.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AppFinance.Controller">
+<VBox minHeight="350.0" minWidth="750.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AppFinance.Controller">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="494.0" prefWidth="808.0" VBox.vgrow="ALWAYS">
             <children>
-            <VBox fx:id="vbox_left" layoutX="109.0" layoutY="11.0" prefHeight="226.0" prefWidth="386.0">
-               <children>
-                  <ComboBox fx:id="combo_abstract_elements" onAction="#onListElementClick" prefWidth="150.0" />
-                  <ListView fx:id="payment_elements" prefHeight="200.0" prefWidth="317.0" VBox.vgrow="ALWAYS" />
-               </children>
-            </VBox>
-                <VBox fx:id="vbox_main" layoutX="600.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="193.0" prefWidth="136.0">
+            <VBox fx:id="vbox_left" layoutX="111.0" layoutY="7.0" prefHeight="27.0" prefWidth="515.0" />
+                <VBox fx:id="vbox_main" layoutX="650.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="193.0" prefWidth="136.0">
                     <children>
                         <Label text="Final Value" />
                         <Label fx:id="final_value" prefHeight="38.0" prefWidth="94.0" text="INIT" textAlignment="CENTER">
@@ -46,7 +41,12 @@
                     </effect>
                 </VBox>
                 <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" text="Save to file" />
-            <FlowPane fx:id="flow_pane_months" layoutX="102.0" layoutY="247.0" prefHeight="200.0" prefWidth="397.0" />
+            <ListView fx:id="payment_elements" layoutX="111.0" layoutY="35.0" prefHeight="213.0" prefWidth="487.0" />
+            <HBox layoutX="111.0" layoutY="7.0" prefHeight="17.0" prefWidth="488.0">
+               <children>
+                  <ComboBox fx:id="combo_abstract_elements" onAction="#onListElementClick" prefWidth="150.0" />
+               </children>
+            </HBox>
             </children>
         </AnchorPane>
     </children>

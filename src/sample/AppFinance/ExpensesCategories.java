@@ -23,6 +23,7 @@ public class ExpensesCategories implements IExpensesCategories
         return 0;
     }
 
+
     @Override
     public double calculateStores()
     {

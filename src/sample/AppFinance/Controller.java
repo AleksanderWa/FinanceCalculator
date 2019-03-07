@@ -5,14 +5,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import sample.Parser.Parser;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Controller implements Initializable
@@ -31,16 +29,13 @@ public class Controller implements Initializable
     VBox vbox_main = new VBox();
 
     @FXML
-    VBox vbox_left = new VBox();
+    ComboBox<String> combo_months = new ComboBox<>();
 
     @FXML
     ComboBox<String> combo_abstract_elements = new ComboBox<>();
 
     @FXML
     ChoiceBox<String> choice_outcome_places = new ChoiceBox<>();
-
-    @FXML
-    FlowPane flow_pane_months = new FlowPane();
 
     @FXML
     ListView<AbstractInOutCome> payment_elements = new ListView<>();
@@ -50,7 +45,7 @@ public class Controller implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        Parser ob = new Parser("C:\\Users\\Aleksander\\Desktop\\2017_2019_history.csv");
+        Parser ob = new Parser("C:\\Users\\walkpale\\Downloads\\history_csv_20190130_115116.csv");
         Double moneyEarned = 0.0;
         Double moneySpent = 0.0;
         Double finalValue;
@@ -73,9 +68,6 @@ public class Controller implements Initializable
         income.setText(moneyEarned.toString());
         outcome.setText(moneySpent.toString());
 
-        flow_pane_months.setPadding(new Insets(5, 0, 5, 0));
-        flow_pane_months.setVgap(4);
-        flow_pane_months.setHgap(4);
 
     }
 
@@ -104,7 +96,7 @@ public class Controller implements Initializable
     public void onListElementClick()
     {
         payment_elements.setItems(getObservableArrayList(combo_abstract_elements.getValue(), globalList));
-        ObservableList list = flow_pane_months.getChildren();
+
         //list.addAll(getObservableArrayList(combo_abstract_elements.getValue(), globalList));
     }
 

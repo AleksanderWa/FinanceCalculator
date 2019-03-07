@@ -1,7 +1,11 @@
-package sample.AppFinance;
+package sample.Parser;
 
 import io.reactivex.Flowable;
 import org.jetbrains.annotations.NotNull;
+import sample.AppFinance.AbstractInOutCome;
+import sample.AppFinance.BankOperationConsts;
+import sample.AppFinance.InOutComeFactory;
+import sample.AppFinance.Receiver;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -17,7 +21,7 @@ public class Parser {
     private String csvPath;
     private List<AbstractInOutCome> list;
 
-    Parser(String csvPath)
+    public Parser(String csvPath)
     {
         this.csvPath = csvPath;
         list = new ArrayList<>();
@@ -27,7 +31,7 @@ public class Parser {
         return list;
     }
 
-   List<AbstractInOutCome> readCsvFile()
+   public List<AbstractInOutCome> readCsvFile()
    {
 
         Flowable<String> readerFile = Flowable.using(
