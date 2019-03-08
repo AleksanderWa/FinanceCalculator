@@ -63,11 +63,11 @@ public class Controller implements Initializable
         }
         globalList = new ArrayList<>(ob.getList());
         fillChoiceList(createUniqueList(ob.getList()));
+        fillMonthList(createMonthList(ob.getList()));
         finalValue = (moneyEarned + moneySpent);
         final_value.setText(finalValue.toString());
         income.setText(moneyEarned.toString());
         outcome.setText(moneySpent.toString());
-
 
     }
 
@@ -87,25 +87,49 @@ public class Controller implements Initializable
         return uniqueList;
     }
 
+    private ArrayList<Integer> createMonthList (List<AbstractInOutCome> wholeList)
+    {
+        ArrayList<Integer> months = new ArrayList<>();
+        for (AbstractInOutCome elem : wholeList)
+        {
+            if(!months.contains(elem.getDateOfOperation().getMonth()))
+                months.add(elem.getDateOfOperation().getMonth());
+        }
+        Collections.sort(months);
+        return months;
+    }
+
     private void fillChoiceList(ArrayList<String> fillList)
     {
         for (String receiverAdd : fillList)
             combo_abstract_elements.getItems().add(receiverAdd);
     }
 
-    public void onListElementClick()
+    private void fillMonthList (ArrayList<Integer> fillList)
     {
-        payment_elements.setItems(getObservableArrayList(combo_abstract_elements.getValue(), globalList));
-
-        //list.addAll(getObservableArrayList(combo_abstract_elements.getValue(), globalList));
+        combo_months.getItems().add("All");
+        for (Integer month : fillList)
+            combo_months.getItems().add(Utilities.monthsToStringList(month));
     }
 
-    private ObservableList<AbstractInOutCome> getObservableArrayList(String paymentReceiverAdd, ArrayList<AbstractInOutCome> list)
+    public void onListElementClick()
+    {
+        payment_elements.setItems(getObservableArrayList(combo_abstract_elements.getValue(), globalList,Utilities.monthsToInt(combo_months.getValue())));
+    }
+
+    public void onMonthListClick()
+    {
+        onListElementClick();
+    }
+
+    private ObservableList<AbstractInOutCome> getObservableArrayList(String paymentReceiverAdd, ArrayList<AbstractInOutCome> list, final int month)
     {
         ArrayList<AbstractInOutCome> selectedElementsList = new ArrayList<>();
         io.reactivex.Observable<AbstractInOutCome> observable = io.reactivex.Observable.fromIterable(list);
 
         observable.filter(element -> element.getPaymentReceiver().getAddress().equalsIgnoreCase(paymentReceiverAdd))
+                .filter(element -> element.getDateOfOperation().getMonth() == month)
+
                 .map(selectedElementsList::add)
                 .doOnError(Throwable::printStackTrace)
                 .subscribe();

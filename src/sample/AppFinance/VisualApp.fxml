@@ -14,7 +14,6 @@
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="494.0" prefWidth="808.0" VBox.vgrow="ALWAYS">
             <children>
-            <VBox fx:id="vbox_left" layoutX="111.0" layoutY="7.0" prefHeight="27.0" prefWidth="515.0" />
                 <VBox fx:id="vbox_main" layoutX="650.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="193.0" prefWidth="136.0">
                     <children>
                         <Label text="Final Value" />
@@ -41,10 +40,11 @@
                     </effect>
                 </VBox>
                 <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" text="Save to file" />
-            <ListView fx:id="payment_elements" layoutX="111.0" layoutY="35.0" prefHeight="213.0" prefWidth="487.0" />
-            <HBox layoutX="111.0" layoutY="7.0" prefHeight="17.0" prefWidth="488.0">
+            <ListView fx:id="payment_elements" layoutX="111.0" layoutY="42.0" prefHeight="213.0" prefWidth="487.0" />
+            <HBox layoutX="111.0" layoutY="7.0" prefHeight="38.0" prefWidth="488.0">
                <children>
                   <ComboBox fx:id="combo_abstract_elements" onAction="#onListElementClick" prefWidth="150.0" />
+                  <ComboBox fx:id="combo_months" onAction="#onMonthListClick" prefWidth="150.0" promptText="All" />
                </children>
             </HBox>
             </children>
