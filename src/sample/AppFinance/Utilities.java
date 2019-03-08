@@ -72,6 +72,7 @@ class Utilities {
 
     static int monthsToInt(String month) {
         Integer monthToInt;
+
         switch (month) {
             case _JAN:
                 monthToInt = JANUARY;

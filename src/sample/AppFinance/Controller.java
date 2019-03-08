@@ -10,6 +10,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import sample.Parser.Parser;
 
+import javax.rmi.CORBA.Util;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.*;
 
@@ -62,8 +64,8 @@ public class Controller implements Initializable
                 moneyEarned += ab.getPaymentValue();
         }
         globalList = new ArrayList<>(ob.getList());
-        fillChoiceList(createUniqueList(ob.getList()));
         fillMonthList(createMonthList(ob.getList()));
+        fillChoiceList(createUniqueList(ob.getList()));
         finalValue = (moneyEarned + moneySpent);
         final_value.setText(finalValue.toString());
         income.setText(moneyEarned.toString());
@@ -74,12 +76,12 @@ public class Controller implements Initializable
     /**
      * Take all items and create unique list without duplicates
      */
-    private static ArrayList<String> createUniqueList(List<AbstractInOutCome> wholeList)
+    private ArrayList<String> createUniqueList(List<AbstractInOutCome> wholeList)
     {
         ArrayList<String> uniqueList = new ArrayList<>();
         for (AbstractInOutCome ab : wholeList)
         {
-            if (!uniqueList.contains(ab.getPaymentReceiver().getAddress()))
+            if (!uniqueList.contains(ab.getPaymentReceiver().getAddress()) && ab.getDateOfOperation().getMonth() == Utilities.monthsToInt(combo_months.getValue()))
                 uniqueList.add(ab.getPaymentReceiver().getAddress());
         }
 
@@ -110,6 +112,7 @@ public class Controller implements Initializable
         combo_months.getItems().add("All");
         for (Integer month : fillList)
             combo_months.getItems().add(Utilities.monthsToStringList(month));
+        combo_months.getSelectionModel().selectFirst();
     }
 
     public void onListElementClick()
@@ -120,6 +123,7 @@ public class Controller implements Initializable
     public void onMonthListClick()
     {
         onListElementClick();
+        fillChoiceList(createUniqueList(globalList));
     }
 
     private ObservableList<AbstractInOutCome> getObservableArrayList(String paymentReceiverAdd, ArrayList<AbstractInOutCome> list, final int month)
