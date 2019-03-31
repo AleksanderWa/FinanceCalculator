@@ -122,7 +122,9 @@ public class Controller implements Initializable
 
     public void onListElementClick()
     {
-        payment_elements.setItems(getObservableArrayList(combo_abstract_elements.getValue(), globalList,Utilities.monthsToInt(combo_months.getValue())));
+        payment_elements.setItems(getObservableArrayList(combo_abstract_elements.getValue(),
+                filterByMonths(globalList,Utilities.monthsToInt(combo_months.getValue())),
+                Utilities.monthsToInt(combo_months.getValue())));
         total_sum.setText(Utilities.calcMonthChoiceExpenses(getObservableArrayList(combo_abstract_elements.getValue(),
                 globalList,Utilities.monthsToInt(combo_months.getValue()))).toString());
     }
