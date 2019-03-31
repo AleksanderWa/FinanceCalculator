@@ -1,5 +1,7 @@
 package sample.AppFinance;
 
+import javafx.collections.ObservableList;
+
 class Utilities {
     private static final int JANUARY = 0;
     private static final int FEBURARY = 1;
@@ -116,5 +118,15 @@ class Utilities {
 
         }
         return monthToInt;
+    }
+
+    static Double calcMonthChoiceExpenses(ObservableList<AbstractInOutCome> list)
+    {
+        Double summary = 0.0;
+        for (AbstractInOutCome entity : list)
+        {
+            summary += entity.getPaymentValue();
+        }
+        return summary;
     }
 }

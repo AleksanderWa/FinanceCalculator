@@ -1,5 +1,6 @@
 package sample.AppFinance;
 
+import io.reactivex.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -31,6 +32,9 @@ public class Controller implements Initializable
     VBox vbox_main = new VBox();
 
     @FXML
+    Label total_sum = new Label();
+
+    @FXML
     ComboBox<String> combo_months = new ComboBox<>();
 
     @FXML
@@ -47,7 +51,7 @@ public class Controller implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        Parser ob = new Parser("C:\\Users\\walkpale\\Downloads\\history_csv_20190130_115116.csv");
+        Parser ob = new Parser("C:\\Users\\Aleksander\\Desktop\\2017_2019_history.csv");
         Double moneyEarned = 0.0;
         Double moneySpent = 0.0;
         Double finalValue;
@@ -103,6 +107,7 @@ public class Controller implements Initializable
 
     private void fillChoiceList(ArrayList<String> fillList)
     {
+        combo_abstract_elements.getItems().removeAll();
         for (String receiverAdd : fillList)
             combo_abstract_elements.getItems().add(receiverAdd);
     }
@@ -118,12 +123,14 @@ public class Controller implements Initializable
     public void onListElementClick()
     {
         payment_elements.setItems(getObservableArrayList(combo_abstract_elements.getValue(), globalList,Utilities.monthsToInt(combo_months.getValue())));
+        total_sum.setText(Utilities.calcMonthChoiceExpenses(getObservableArrayList(combo_abstract_elements.getValue(),
+                globalList,Utilities.monthsToInt(combo_months.getValue()))).toString());
     }
 
     public void onMonthListClick()
     {
         onListElementClick();
-        fillChoiceList(createUniqueList(globalList));
+        fillChoiceList(createUniqueList(filterByMonths(globalList,Utilities.monthsToInt(combo_months.getValue()))));
     }
 
     private ObservableList<AbstractInOutCome> getObservableArrayList(String paymentReceiverAdd, ArrayList<AbstractInOutCome> list, final int month)
@@ -133,12 +140,24 @@ public class Controller implements Initializable
 
         observable.filter(element -> element.getPaymentReceiver().getAddress().equalsIgnoreCase(paymentReceiverAdd))
                 .filter(element -> element.getDateOfOperation().getMonth() == month)
-
                 .map(selectedElementsList::add)
                 .doOnError(Throwable::printStackTrace)
                 .subscribe();
 
 
         return FXCollections.observableArrayList(selectedElementsList);
+    }
+
+    private ArrayList<AbstractInOutCome> filterByMonths( ArrayList<AbstractInOutCome> list, final int month)
+    {
+        ArrayList<AbstractInOutCome> selectedElementsList = new ArrayList<>();
+        io.reactivex.Observable<AbstractInOutCome> observable = io.reactivex.Observable.fromIterable(list);
+        observable
+                .filter( element -> element.getDateOfOperation().getMonth() == month)
+                .doOnError(Throwable::printStackTrace)
+                .map(selectedElementsList::add)
+                .subscribe();
+
+        return selectedElementsList;
     }
 }
