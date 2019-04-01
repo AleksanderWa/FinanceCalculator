@@ -2,10 +2,10 @@ package sample.Parser;
 
 import io.reactivex.Flowable;
 import org.jetbrains.annotations.NotNull;
-import sample.AppFinance.AbstractInOutCome;
+import sample.AppFinance.transaction.AbstractInOutCome;
 import sample.AppFinance.BankOperationConsts;
-import sample.AppFinance.InOutComeFactory;
-import sample.AppFinance.Receiver;
+import sample.AppFinance.transaction.InOutComeFactory;
+import sample.AppFinance.transaction.Receiver;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,6 +1,7 @@
 package sample.AppFinance;
 
 import javafx.collections.ObservableList;
+import sample.AppFinance.transaction.AbstractInOutCome;
 
 class Utilities {
     private static final int JANUARY = 0;

@@ -1,18 +1,16 @@
 package sample.AppFinance;
 
-import io.reactivex.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import sample.AppFinance.transaction.AbstractInOutCome;
+import sample.AppFinance.transaction.Income;
+import sample.AppFinance.transaction.Outcome;
 import sample.Parser.Parser;
 
-import javax.rmi.CORBA.Util;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package sample.AppFinance;
+package sample.AppFinance.transaction;
 
 public class Receiver {
     private String country;
@@ -14,18 +14,18 @@ public class Receiver {
         this.bankAccountNmb = bankAccountNmb;
     }
 
-    String getCity() {
+    public String getCity() {
         return city;
     }
 
-    String getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    String getCountry()
+    public String getCountry()
     {
         return this.country;
     }
 
-    String getBankAccountNmb() {return this.bankAccountNmb; }
+    public String getBankAccountNmb() {return this.bankAccountNmb; }
 }

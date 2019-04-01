@@ -1,4 +1,4 @@
-package sample.AppFinance;
+package sample.AppFinance.transaction;
 
 import java.util.Date;
 

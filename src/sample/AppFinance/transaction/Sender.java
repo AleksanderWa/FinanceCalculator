@@ -1,4 +1,4 @@
-package sample.AppFinance;
+package sample.AppFinance.transaction;
 
 public class Sender {
     private String name;

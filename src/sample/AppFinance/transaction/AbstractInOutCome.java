@@ -1,4 +1,4 @@
-package sample.AppFinance;
+package sample.AppFinance.transaction;
 
 import java.util.Date;
 
@@ -23,7 +23,7 @@ public abstract class AbstractInOutCome{
         this.description = description;
     }
 
-    double getPaymentValue() {
+    public double getPaymentValue() {
         return paymentValue;
     }
 
@@ -47,7 +47,7 @@ public abstract class AbstractInOutCome{
         this.currencyType = currencyType;
     }
 
-    Receiver getPaymentReceiver() {
+    public Receiver getPaymentReceiver() {
         return paymentReceiver;
     }
 
@@ -55,7 +55,7 @@ public abstract class AbstractInOutCome{
         this.paymentReceiver = paymentReceiver;
     }
 
-    Date getDateOfOperation() {
+    public Date getDateOfOperation() {
         return dateOfOperation;
     }
 
@@ -71,7 +71,7 @@ public abstract class AbstractInOutCome{
         this.paymentMethod = paymentMethod;
     }
 
-    String getDescription() {
+    public String getDescription() {
         return description;
     }
 
